@@ -3,457 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeSciWorld - Democratizing Scientific Discovery</title>
+    <title>DeSciWorld - Democratizing Scientific Research</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --bg-light: #f8fafc;
+            --primary-color: #2E3192;
+            --secondary-color: #00D4FF;
+            --accent-color: #7B3FF2;
+            --text-dark: #1a1a2e;
+            --text-light: #6c757d;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gray-bg: #f8f9fa;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
             overflow-x: hidden;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Navigation */
-        nav {
-            background: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        nav .container {
+        
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
-
+        
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
         }
-
-        nav ul {
+        
+        .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
             align-items: center;
         }
-
-        nav a {
+        
+        .nav-links a {
             color: var(--text-dark);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-
-        nav a:hover {
-            color: var(--primary);
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
         }
-
-        .nav-cta {
+        
+        .cta-button {
             background: var(--gradient);
-            color: var(--white) !important;
-            padding: 0.5rem 1.5rem;
-            border-radius: 6px;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-dark);
-            transition: all 0.3s ease;
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 63, 242, 0.3);
         }
-
+        
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 4rem 0;
-            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
-            min-height: 90vh;
-            display: flex;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
         }
-
-        .hero-content {
-            text-align: center;
-        }
-
-        .hero h1 {
+        
+        .hero-text h1 {
             font-size: 3.5rem;
             font-weight: 800;
+            color: var(--primary-color);
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
-
-        .hero p {
+        
+        .hero-text p {
             font-size: 1.25rem;
             color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
-
+        
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
             font-weight: 600;
+            text-decoration: none;
             transition: all 0.3s ease;
-            display: inline-block;
         }
-
-        .btn-primary {
+        
+        .secondary-button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-graphic {
+            width: 100%;
+            height: 400px;
             background: var(--gradient);
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(123, 63, 242, 0.2);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        
+        .hero-graphic::before {
+            content: '🧬';
+            position: absolute;
+            font-size: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
         }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
+        
         /* Features Section */
         .features {
-            padding: 5rem 0;
+            padding: 100px 0;
             background: var(--white);
         }
-
-        .features h2 {
-            font-size: 2.5rem;
+        
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
+            margin-bottom: 4rem;
         }
-
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 3rem;
         }
-
+        
         .feature-card {
-            padding: 2rem;
-            background: var(--bg-light);
-            border-radius: 12px;
+            background: var(--gray-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
-
+        
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            color: var(--white);
         }
-
+        
         .feature-card h3 {
             font-size: 1.5rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            color: var(--text-dark);
         }
-
+        
         .feature-card p {
             color: var(--text-light);
             line-height: 1.8;
         }
-
+        
         /* Pricing Section */
         .pricing {
-            padding: 5rem 0;
-            background: var(--bg-light);
+            padding: 100px 0;
+            background: var(--gray-bg);
         }
-
-        .pricing h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
-        }
-
+        
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+            margin-top: 4rem;
         }
-
+        
         .pricing-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2.5rem;
+            background: white;
+            border-radius: 15px;
+            padding: 3rem 2rem;
             text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
+        .pricing-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(123, 63, 242, 0.2);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
         .pricing-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
-
-        .pricing-card.featured {
-            background: var(--gradient);
-            color: var(--white);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured .price,
-        .pricing-card.featured h3,
-        .pricing-card.featured p,
-        .pricing-card.featured li {
-            color: var(--white);
-        }
-
+        
         .pricing-card h3 {
             font-size: 1.75rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
-
+        
         .price {
             font-size: 3rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            color: var(--primary);
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
         }
-
+        
         .price-period {
-            font-size: 1rem;
-            font-weight: normal;
             color: var(--text-light);
+            font-size: 1rem;
         }
-
-        .pricing-card.featured .price-period {
-            color: rgba(255,255,255,0.9);
-        }
-
+        
         .pricing-features {
             list-style: none;
-            margin: 2rem 0;
-            text-align: left;
+            padding: 2rem 0;
+            border-top: 1px solid #eee;
+            margin-top: 2rem;
         }
-
+        
         .pricing-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 0.5rem 0;
             color: var(--text-light);
         }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
+        
         .pricing-features li::before {
-            content: "✓ ";
-            color: var(--primary);
+            content: '✓ ';
+            color: var(--secondary-color);
             font-weight: bold;
             margin-right: 0.5rem;
         }
-
-        .pricing-card.featured .pricing-features li::before {
-            color: var(--white);
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 5rem 0;
-            background: var(--gradient);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
-        }
-
+        
         /* Footer */
         footer {
             background: var(--text-dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
+            color: white;
+            padding: 3rem 0;
             text-align: center;
         }
-
+        
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
-            text-align: left;
         }
-
+        
         .footer-section h4 {
             margin-bottom: 1rem;
-            color: var(--white);
         }
-
+        
         .footer-section a {
-            color: rgba(255,255,255,0.7);
+            color: #ccc;
             text-decoration: none;
             display: block;
-            padding: 0.25rem 0;
+            padding: 0.3rem 0;
             transition: color 0.3s ease;
         }
-
+        
         .footer-section a:hover {
-            color: var(--white);
+            color: var(--secondary-color);
         }
-
+        
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid #444;
             padding-top: 2rem;
             margin-top: 2rem;
-            text-align: center;
-            color: rgba(255,255,255,0.7);
         }
-
-        /* Responsive Design */
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                transition: right 0.3s ease;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            .nav-links {
+                display: none;
             }
-
-            nav ul.active {
-                right: 0;
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
+            
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
-
-            .hero p {
-                font-size: 1.1rem;
+            
+            .hero-graphic {
+                height: 300px;
             }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
+            
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
             }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .features h2,
-            .pricing h2,
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .footer-content {
-                text-align: center;
-            }
-
+            
             .pricing-card.featured {
                 transform: scale(1);
             }
@@ -461,34 +382,33 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">DeSciWorld</div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul id="nav-menu">
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🔬 DeSciWorld</div>
+            <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#" class="nav-cta">Get Started</a></li>
+                <li><a href="#" class="cta-button">Launch App</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Democratizing Scientific Discovery</h1>
-                <p>Join the future of decentralized science where researchers collaborate openly, data flows freely, and breakthrough discoveries are accessible to all.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Start Your Research</a>
-                    <a href="#" class="btn btn-secondary">Explore Projects</a>
+                <div class="hero-text">
+                    <h1>Democratizing Scientific Research</h1>
+                    <p>Break down barriers to scientific discovery with blockchain-powered open research. Fund groundbreaking studies, collaborate globally, and accelerate humanity's progress.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="cta-button">Start Research</a>
+                        <a href="#" class="secondary-button">Explore Papers</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-graphic"></div>
                 </div>
             </div>
         </div>
@@ -497,37 +417,40 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2>Revolutionizing Research Collaboration</h2>
+            <div class="section-header">
+                <h2>Revolutionizing How Science Gets Done</h2>
+                <p>From funding to publication, we're reimagining every step of the research process</p>
+            </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
-                    <h3>Open Access Publishing</h3>
-                    <p>Publish your research instantly with permanent identifiers. No paywalls, no gatekeepers. Your work reaches the global scientific community immediately.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Peer Review Transparency</h3>
-                    <p>Experience open peer review where feedback is constructive, traceable, and contributes to scientific discourse. Build reputation through quality contributions.</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">💎</div>
-                    <h3>Tokenized Research Funding</h3>
-                    <p>Fund and invest in promising research projects using blockchain technology. Researchers retain ownership while supporters share in scientific breakthroughs.</p>
+                    <h3>Decentralized Funding</h3>
+                    <p>Crowdfund your research directly from the global scientific community. No gatekeepers, no bureaucracy. Your breakthrough ideas get the resources they deserve.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Research Assistant</h3>
-                    <p>Leverage cutting-edge AI to analyze literature, identify research gaps, and generate insights from millions of papers in seconds.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>Immutable Data Storage</h3>
-                    <p>Store research data, code, and manuscripts on decentralized infrastructure. Every version is preserved, timestamped, and verifiable forever.</p>
+                    <div class="feature-icon">🔍</div>
+                    <h3>Transparent Peer Review</h3>
+                    <p>Every review is recorded on-chain. Track the evolution of ideas, reward quality reviewers, and ensure scientific integrity through radical transparency.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌍</div>
                     <h3>Global Collaboration</h3>
-                    <p>Connect with researchers worldwide without institutional barriers. Form teams, share resources, and accelerate discovery across borders.</p>
+                    <p>Connect with researchers worldwide. Share data, methodologies, and insights in real-time. Science without borders, powered by Web3.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Immutable Records</h3>
+                    <p>Your research contributions are permanently recorded on the blockchain. Establish priority, protect IP, and build your scientific reputation forever.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🪙</div>
+                    <h3>Research Tokens</h3>
+                    <p>Earn DSCI tokens for quality contributions. Fund projects, access premium features, and participate in governance of the scientific ecosystem.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Open Data Markets</h3>
+                    <p>Share and monetize research data ethically. Set your terms, maintain control, and accelerate discovery through responsible data exchange.</p>
                 </div>
             </div>
         </div>
@@ -536,60 +459,55 @@
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2>Choose Your Research Journey</h2>
+            <div class="section-header">
+                <h2>Choose Your Research Journey</h2>
+                <p>From independent researchers to large institutions, we have a plan for you</p>
+            </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Researcher</h3>
                     <div class="price">Free</div>
-                    <p>Perfect for individual researchers</p>
+                    <div class="price-period">Forever</div>
                     <ul class="pricing-features">
                         <li>Publish unlimited papers</li>
-                        <li>5 GB data storage</li>
-                        <li>Basic AI research assistant</li>
-                        <li>Participate in peer review</li>
+                        <li>Basic peer review tools</li>
+                        <li>5GB data storage</li>
                         <li>Join research communities</li>
+                        <li>Earn DSCI tokens</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary">Start Free</a>
+                    <a href="#" class="cta-button">Get Started</a>
                 </div>
                 <div class="pricing-card featured">
-                    <h3>Lab Pro</h3>
-                    <div class="price">$99<span class="price-period">/month</span></div>
-                    <p>For research labs and teams</p>
+                    <h3>Lab</h3>
+                    <div class="price">$99</div>
+                    <div class="price-period">per month</div>
                     <ul class="pricing-features">
                         <li>Everything in Researcher</li>
-                        <li>Unlimited data storage</li>
-                        <li>Advanced AI insights</li>
+                        <li>Advanced analytics dashboard</li>
+                        <li>100GB data storage</li>
+                        <li>Priority peer review</li>
                         <li>Team collaboration tools</li>
-                        <li>Priority support</li>
-                        <li>Custom DOI prefix</li>
-                        <li>Analytics dashboard</li>
+                        <li>Custom funding campaigns</li>
+                        <li>API access</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="#" class="cta-button">Start Free Trial</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Institution</h3>
-                    <div class="price">Custom</div>
-                    <p>For universities and enterprises</p>
+                    <div class="price">$499</div>
+                    <div class="price-period">per month</div>
                     <ul class="pricing-features">
-                        <li>Everything in Lab Pro</li>
-                        <li>Unlimited team members</li>
-                        <li>Private infrastructure</li>
-                        <li>Custom integrations</li>
+                        <li>Everything in Lab</li>
+                        <li>Unlimited storage</li>
+                        <li>White-label options</li>
                         <li>Dedicated support</li>
+                        <li>Custom smart contracts</li>
                         <li>Compliance tools</li>
+                        <li>Advanced governance</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary">Contact Sales</a>
+                    <a href="#" class="cta-button">Contact Sales</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Transform Science?</h2>
-            <p>Join thousands of researchers already building the future of open, collaborative, and transparent scientific discovery.</p>
-            <a href="#" class="btn">Launch Your Research Hub</a>
         </div>
     </section>
 
@@ -601,70 +519,35 @@
                     <h4>Product</h4>
                     <a href="#">Features</a>
                     <a href="#">Pricing</a>
-                    <a href="#">Use Cases</a>
-                    <a href="#">Integrations</a>
+                    <a href="#">Roadmap</a>
+                    <a href="#">API Docs</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="#">Discord</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Blog</a>
                 </div>
                 <div class="footer-section">
                     <h4>Resources</h4>
                     <a href="#">Documentation</a>
-                    <a href="#">API Reference</a>
-                    <a href="#">Research Blog</a>
-                    <a href="#">Community Forum</a>
+                    <a href="#">Whitepaper</a>
+                    <a href="#">Token Economics</a>
+                    <a href="#">FAQs</a>
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
                     <a href="#">About Us</a>
-                    <a href="#">Mission</a>
                     <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
                     <a href="#">Contact</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Research Ethics</a>
-                    <a href="#">Data Security</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 DeSciWorld. Empowering scientific discovery through decentralization.</p>
+                <p>&copy; 2026 DeSciWorld. Empowering scientific discovery through decentralization.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('active');
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('nav-menu').classList.remove('active');
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-            }
-        });
-    </script>
 </body>
-</html><!-- Deployed by Vibiz -->
-<!-- Build trigger Sat Mar 14 10:37:32 UTC 2026 -->
+</html>
