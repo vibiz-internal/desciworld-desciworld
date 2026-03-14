@@ -1,0 +1,8 @@
+{
+  "name": "desciworld",
+  "version": "1.0.0",
+  "description": "DeSci World Community Platform",
+  "scripts": {
+    "build": "echo 'No build required for static site'"
+  }
+}
